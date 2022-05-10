@@ -1,2 +1,2 @@
 # akamai-pipeine-gcp
-Akamai Multi Environment Pipeline Built in Google Cloud Provider (GCP)
+Akamai Multi Environment Pipeline deployed by Google Cloud Provider (GCP) Cloud Builder.
