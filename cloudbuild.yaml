@@ -1,0 +1,3 @@
+steps:
+- name: 'akamai/shell'
+  args: ['akamai']
