@@ -12,7 +12,6 @@ steps:
 #  secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
 - name: 'postman/newman'
-  entrypoint: 'newman'
   args: ['newman']
 
 #availableSecrets:
