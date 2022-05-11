@@ -12,8 +12,7 @@ steps:
   secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
 - name: 'postman/newman'
-  args: ['', 'newman', 'run', '${_PIPELINE_NAME}/test/environments/${_ENVIRONMENT}/${_PIPELINE_NAME}.postman_collection.json', '--bail']
-
+  args: ['', 'newman run ${_PIPELINE_NAME}/test/environments/${_ENVIRONMENT}/${_PIPELINE_NAME}.postman_collection.json --bail']
 
 availableSecrets:
   secretManager:
