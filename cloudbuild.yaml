@@ -14,6 +14,7 @@ steps:
 - name: 'postman/newman'
   args: ['', 'newman', 'run', '${_PIPELINE_NAME}/test/environments/${_ENVIRONMENT}/${_PIPELINE_NAME}.postman_collection.json', '--bail']
 
+
 availableSecrets:
   secretManager:
   - versionName: projects/nice-pen-317300/secrets/ACCOUNT_KEY/versions/latest
