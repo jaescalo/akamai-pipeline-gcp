@@ -6,8 +6,6 @@ steps:
   - | 
     echo -e "[papi]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > edgerc.config \
     && akamai pm search ${_PROPERTY_NAME} --accountSwitchKey $$ACCOUNT_KEY \
-substitutions:
-  - _PROPERTY_NAME: jaescalo-testing
   secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
 availableSecrets:
@@ -22,3 +20,6 @@ availableSecrets:
     env: 'CLIENT_TOKEN'
   - versionName: projects/nice-pen-317300/secrets/EDGERC_HOST/versions/latest
     env: 'HOST'
+
+substitutions:
+  _PROPERTY_NAME: jaescalo-testing # Akamai Property Name
