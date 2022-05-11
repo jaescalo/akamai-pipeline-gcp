@@ -7,7 +7,7 @@ steps:
     echo -e "[default]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > edgerc.config \
     && pwd \
     && ls -lhart \
-    && cat .edgerc.config \
+    && cat edgerc.config \
     && akamai pm search jaescalo-testing --accountSwitchKey $$ACCOUNT_KEY 
   secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
