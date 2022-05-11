@@ -1,3 +1,23 @@
 steps:
 - name: 'akamai/shell'
-  args: ['akamai']
+  entrypoint: 'bash'
+  args: 
+  - -c
+  - echo -e "[default]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > .edgerc
+  - ls -lhart
+  - cat .edgerc
+  - akamai pm search jaescalo-testing --accountSwitchKey $$ACCOUNT_KEY
+  secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/nice-pen-317300/secrets/ACCOUNT_KEY/versions/latest
+    env: 'ACCOUNT_KEY'
+  - versionName: projects/nice-pen-317300/secrets/EDGERC_ACCESS_TOKEN/versions/latest
+    env: 'ACCESS_TOKEN'
+  - versionName: projects/nice-pen-317300/secrets/EDGERC_CLIENT_SECRET/versions/latest
+    env: 'CLIENT_SECRET'
+  - versionName: projects/nice-pen-317300/secrets/EDGERC_CLIENT_TOKEN/versions/latest
+    env: 'CLIENT_TOKEN'
+  - versionName: projects/nice-pen-317300/secrets/EDGERC_HOST/versions/latest
+    env: 'HOST'
