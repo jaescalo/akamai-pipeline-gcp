@@ -5,10 +5,9 @@ steps:
   - '-c' 
   - | 
     echo -e "[papi]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > edgerc.config \
-    && pwd \
-    && ls -lhart \
-    && cat edgerc.config \
-    && akamai pm search jaescalo-testing --accountSwitchKey $$ACCOUNT_KEY 
+    && akamai pm search ${_PROPERTY_NAME} --accountSwitchKey $$ACCOUNT_KEY \
+  substitutions:
+  - _PROPERTY_NAME: jaescalo-testing
   secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
 availableSecrets:
