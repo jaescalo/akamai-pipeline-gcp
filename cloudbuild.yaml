@@ -8,7 +8,7 @@ steps:
     && pwd \
     && ls -lhart \
     && cat .edgerc \
-    && akamai pm search jaescalo-testing --accountSwitchKey $$ACCOUNT_KEY --edgerc /workspace --section default
+    && akamai pm search jaescalo-testing --accountSwitchKey $$ACCOUNT_KEY 
   secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
 availableSecrets:
