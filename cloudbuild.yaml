@@ -6,7 +6,8 @@ steps:
   - | 
     echo -e "[default]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > .edgerc \
     && pwd \
-    && akamai pm search jaescalo-testing --accountSwitchKey $$ACCOUNT_KEY
+    && ls -lhart \
+    && akamai pm search jaescalo-testing --accountSwitchKey $$ACCOUNT_KEY --edgerc /workspace
   secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
 availableSecrets:
