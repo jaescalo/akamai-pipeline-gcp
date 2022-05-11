@@ -1,7 +1,12 @@
 steps:
 - name: 'akamai/shell'
   entrypoint: 'bash'
-  args: ['-c', 'echo -e "[default]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > .edgerc && cat .edgerc && akamai pm search jaescalo-testing --accountSwitchKey $$ACCOUNT_KEY']
+  args: 
+  - '-c' 
+  - | 
+    'echo -e "[default]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > .edgerc \
+    && pwd \
+    && akamai pm search jaescalo-testing --accountSwitchKey $$ACCOUNT_KEY']
   secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
 availableSecrets:
