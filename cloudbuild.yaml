@@ -6,7 +6,7 @@ steps:
   - | 
     echo -e "[papi]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > edgerc.config \
     && akamai pm search ${_PROPERTY_NAME} --accountSwitchKey $$ACCOUNT_KEY \
-  substitutions:
+substitutions:
   - _PROPERTY_NAME: jaescalo-testing
   secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
