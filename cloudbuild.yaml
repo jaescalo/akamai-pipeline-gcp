@@ -5,7 +5,9 @@ steps:
   - '-c' 
   - | 
     echo -e "[papi]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > edgerc.config \
-    && akamai pm search ${_PROPERTY_NAME} --accountSwitchKey $$ACCOUNT_KEY \
+    && akamai pm search ${_ENVIRONMENT}.${_PIPELINE_NAME} --accountSwitchKey $$ACCOUNT_KEY \
+    && akamai pipeline merge -n -v -p ${_PIPELINE_NAME} ${_ENVIRONMENT} \
+    && akamai property-manager property-update -p ${_ENVIRONMENT}.${_PIPELINE_NAME} --file ${_PIPELINE_NAME}/dist/${_ENVIRONMENT}.${_PIPELINE_NAME}.papi.json --message "Created By CloudBuild-$PROJECT_ID-$BUILD_ID; Commit $COMMIT_SHA" --accountSwitchKey $$ACCOUNTKEY
   secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
 availableSecrets:
@@ -22,4 +24,5 @@ availableSecrets:
     env: 'HOST'
 
 substitutions:
-  _PROPERTY_NAME: jaescalo-testing # Akamai Property Name
+  _ENVIRONMENT: prod
+  _PIPELINE_NAME: gitlab-pipeline-demo
