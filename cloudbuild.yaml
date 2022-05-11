@@ -4,7 +4,7 @@ steps:
   args: 
   - '-c' 
   - | 
-    echo -e "[default]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > .edgerc \
+    echo -e "[default]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > edgerc.config \
     && pwd \
     && ls -lhart \
     && cat .edgerc \
