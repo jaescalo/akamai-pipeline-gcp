@@ -13,7 +13,7 @@ steps:
 
 - name: 'postman/newman'
   entrypoint: 'newman'
-  args: ['newman run ${_PIPELINE_NAME}/test/environments/${_ENVIRONMENT}/${_PIPELINE_NAME}.postman_collection.json --bail']
+  args: ['run ${_PIPELINE_NAME}/test/environments/${_ENVIRONMENT}/${_PIPELINE_NAME}.postman_collection.json --bail']
 
 #availableSecrets:
 #  secretManager:
