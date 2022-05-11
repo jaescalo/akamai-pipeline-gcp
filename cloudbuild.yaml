@@ -12,7 +12,6 @@ steps:
   secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
 
-
 availableSecrets:
   secretManager:
   - versionName: projects/nice-pen-317300/secrets/ACCOUNT_KEY/versions/latest
