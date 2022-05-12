@@ -1,41 +1,41 @@
 steps:
-#- name: 'akamai/shell'
-#  entrypoint: 'bash'
-#  args: 
-#  - '-c' 
-#  - | 
-#    echo -e "[papi]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > edgerc.config \
-#    && akamai pm search ${_ENVIRONMENT}.${_PIPELINE_NAME} --accountSwitchKey $$ACCOUNT_KEY \
-#    && akamai pipeline merge -n -v -p ${_PIPELINE_NAME} ${_ENVIRONMENT} \
-#    && akamai property-manager property-update -p ${_ENVIRONMENT}.${_PIPELINE_NAME} --file ${_PIPELINE_NAME}/dist/${_ENVIRONMENT}.${_PIPELINE_NAME}.papi.json --message "Created By CloudBuild-$PROJECT_ID-$BUILD_ID; Commit $COMMIT_SHA" --accountSwitchKey $$ACCOUNT_KEY 
-#  secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
+- name: 'akamai/shell'
+  entrypoint: 'bash'
+  args: 
+  - '-c' 
+  - | 
+    echo -e "[papi]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > edgerc.config \
+    && akamai pm search ${_ENVIRONMENT}.${_PIPELINE_NAME} --accountSwitchKey $$ACCOUNT_KEY \
+    && akamai pipeline merge -n -v -p ${_PIPELINE_NAME} ${_ENVIRONMENT} \
+    && akamai property-manager property-update -p ${_ENVIRONMENT}.${_PIPELINE_NAME} --file ${_PIPELINE_NAME}/dist/${_ENVIRONMENT}.${_PIPELINE_NAME}.papi.json --message "Created By CloudBuild-$PROJECT_ID-$BUILD_ID; Commit $COMMIT_SHA" --accountSwitchKey $$ACCOUNT_KEY 
+  secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
-#- name: 'akamai/shell'
-#  entrypoint: 'bash'
-#  args: 
-#  - '-c' 
-#  - | 
-#    echo -e "[papi]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > edgerc.config \
-#    && akamai pm search ${_ENVIRONMENT}.${_PIPELINE_NAME} --accountSwitchKey $$ACCOUNT_KEY \
-#    && akamai property-manager activate-version -p ${_ENVIRONMENT}.${_PIPELINE_NAME} --network staging --wait-for-activate --accountSwitchKey $$ACCOUNT_KEY 
-#  secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
+- name: 'akamai/shell'
+  entrypoint: 'bash'
+  args: 
+  - '-c' 
+  - | 
+    echo -e "[papi]\nclient_secret = $$CLIENT_SECRET\nhost = $$HOST\naccess_token = $$ACCESS_TOKEN\nclient_token = $$CLIENT_TOKEN" > edgerc.config \
+    && akamai pm search ${_ENVIRONMENT}.${_PIPELINE_NAME} --accountSwitchKey $$ACCOUNT_KEY \
+    && akamai property-manager activate-version -p ${_ENVIRONMENT}.${_PIPELINE_NAME} --network staging --wait-for-activate --accountSwitchKey $$ACCOUNT_KEY 
+  secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
 - name: 'postman/newman'
   entrypoint: ''
   args: ['run', '${_PIPELINE_NAME}/test/environments/${_ENVIRONMENT}/${_PIPELINE_NAME}.postman_collection.json',  '--bail']
 
-#availableSecrets:
-#  secretManager:
-#  - versionName: projects/nice-pen-317300/secrets/ACCOUNT_KEY/versions/latest
-#    env: 'ACCOUNT_KEY'
-#  - versionName: projects/nice-pen-317300/secrets/EDGERC_ACCESS_TOKEN/versions/latest
-#    env: 'ACCESS_TOKEN'
-#  - versionName: projects/nice-pen-317300/secrets/EDGERC_CLIENT_SECRET/versions/latest
-#    env: 'CLIENT_SECRET'
-#  - versionName: projects/nice-pen-317300/secrets/EDGERC_CLIENT_TOKEN/versions/latest
-#    env: 'CLIENT_TOKEN'
-#  - versionName: projects/nice-pen-317300/secrets/EDGERC_HOST/versions/latest
-#    env: 'HOST'
+availableSecrets:
+  secretManager:
+  - versionName: projects/nice-pen-317300/secrets/ACCOUNT_KEY/versions/latest
+    env: 'ACCOUNT_KEY'
+  - versionName: projects/nice-pen-317300/secrets/EDGERC_ACCESS_TOKEN/versions/latest
+    env: 'ACCESS_TOKEN'
+  - versionName: projects/nice-pen-317300/secrets/EDGERC_CLIENT_SECRET/versions/latest
+    env: 'CLIENT_SECRET'
+  - versionName: projects/nice-pen-317300/secrets/EDGERC_CLIENT_TOKEN/versions/latest
+    env: 'CLIENT_TOKEN'
+  - versionName: projects/nice-pen-317300/secrets/EDGERC_HOST/versions/latest
+    env: 'HOST'
 
 substitutions:
   _ENVIRONMENT: prod
