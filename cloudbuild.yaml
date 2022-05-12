@@ -29,7 +29,7 @@ steps:
 # Push the rule tree file from GCS Bucket.
 artifacts:
   objects:
-    location: 'gs://nice-pen-317300_cloudbuild/'
+    location: 'gs://ak-artifacts-ruletrees/${_ENVIRONMENT}.${_PIPELINE_NAME}'
     paths: ['*.json']
 
 availableSecrets:
