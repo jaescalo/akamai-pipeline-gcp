@@ -1,6 +1,6 @@
 steps:
 # Simulate a Build stage where artifacts are created and can be stored in an artifactory
-- name: 'akamai/property-manager'
+- name: 'akamai/shell'
   entrypoint: 'bash'
   args: 
   - '-c' 
@@ -11,7 +11,7 @@ steps:
   secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
 # Simulate a Deploy stage where the property is activated
-- name: 'akamai/property-manager'
+- name: 'akamai/shell'
   entrypoint: 'bash'
   args: 
   - '-c' 
