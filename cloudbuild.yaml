@@ -29,7 +29,7 @@ steps:
 # Push the rule tree file to GCS Bucket (Cloud Storage)
 artifacts:
   objects:
-    location: 'gs://ak-artifacts-ruletrees/${_ENVIRONMENT}.${_PIPELINE_NAME}'
+    location: 'gs://ak-artifacts-ruletrees'
     paths: ['${_PIPELINE_NAME}/dist/${_ENVIRONMENT}.${_PIPELINE_NAME}.papi.json']
 
 availableSecrets:
