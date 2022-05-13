@@ -30,7 +30,7 @@ steps:
 artifacts:
   objects:
     location: 'gs://ak-artifacts-ruletrees/${_ENVIRONMENT}.${_PIPELINE_NAME}'
-    paths: ['*.json']
+    paths: ['${_PIPELINE_NAME}/dist/${_ENVIRONMENT}.${_PIPELINE_NAME}.papi.json']
 
 availableSecrets:
   secretManager:
