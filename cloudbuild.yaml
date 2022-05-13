@@ -1,6 +1,6 @@
 steps:
 # Simulate a Build stage where artifacts are created and can be stored in an artifactory
-- name: 'akamai/shell'
+- name: 'akamai/property-manager'
   entrypoint: 'bash'
   args: 
   - '-c' 
@@ -11,7 +11,7 @@ steps:
   secretEnv: ['ACCOUNT_KEY', 'ACCESS_TOKEN', 'CLIENT_SECRET', 'CLIENT_TOKEN', 'HOST']
 
 # Simulate a Deploy stage where the property is activated
-- name: 'akamai/shell'
+- name: 'akamai/property-manager'
   entrypoint: 'bash'
   args: 
   - '-c' 
@@ -26,7 +26,7 @@ steps:
   entrypoint: ''
   args: ['run', '${_PIPELINE_NAME}/test/environments/${_ENVIRONMENT}/${_PIPELINE_NAME}.postman_collection.json',  '--bail']
 
-# Push the rule tree file from GCS Bucket.
+# Push the rule tree file to GCS Bucket (Cloud Storage)
 artifacts:
   objects:
     location: 'gs://ak-artifacts-ruletrees/${_ENVIRONMENT}.${_PIPELINE_NAME}'
