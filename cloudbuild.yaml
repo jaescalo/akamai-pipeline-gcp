@@ -46,5 +46,5 @@ availableSecrets:
     env: 'HOST'
 
 substitutions:
-  _ENVIRONMENT: prod
+  _ENVIRONMENT: dev
   _PIPELINE_NAME: gitlab-pipeline-demo
