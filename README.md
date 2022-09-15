@@ -60,7 +60,7 @@ These steps should only need to be executed once when you're converting a proper
 Our file repository is set up! These can be uploaded to GitLab now and managed with CI/CD.
 
 ## Cloud Build Setup
-For this demo, temporary Akamai API Credentials credentials are stored in GCP Secrets Manager. The naming convention for the variables used is:
+For this demo, temporary Akamai API Credentials credentials are stored in **GCP Secrets Manager**. The naming convention for the variables used is:
 
 - CLIENT_SECRET = client_secret
 - HOST = host
@@ -72,6 +72,8 @@ This values will be used in the pipeline Jobs/Steps to create the `.edgerc` file
 You'll also notice that we will run our commands inside Docker containers which makes the environment setup much simpler.
 
 Inside the CI/CD configuration file you will see references to the `--accountSwitchKey` which you can ignore if you don't manage multiple accounts with one API client.
+
+Finally, for this particular integration **GitHub** is used as the version control repository and the connection is made in Cloud Build.
 
 ## Akamai CI/CD Setup in GCP Cloud Build
 This is a simple example that leverages the akamai/shell Docker container to build the .edgerc file in one job and execute the pipeline cli in another job. Check the `cloudbuild.yml` for more clarification on the following steps.
