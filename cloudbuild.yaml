@@ -24,7 +24,7 @@ steps:
 # Testing stage. Use of postman collection.
 - name: 'postman/newman'
   entrypoint: ''
-  args: ['run', '${_PIPELINE_NAME}/test/environments/${_ENVIRONMENT}/${_PIPELINE_NAME}.postman_collection.json',  '--bail']
+  args: ['run', '${_PIPELINE_NAME}/tests/environments/${_ENVIRONMENT}/${_ENVIRONMENT}.${_PIPELINE_NAME}.postman_collection.json',  '--bail']
 
 # Push the rule tree file to GCS Bucket (Cloud Storage)
 artifacts:
@@ -46,5 +46,5 @@ availableSecrets:
     env: 'HOST'
 
 substitutions:
-  _ENVIRONMENT: dev
-  _PIPELINE_NAME: gitlab-pipeline-demo
+  _ENVIRONMENT: gitops-dev
+  _PIPELINE_NAME: demo.com
